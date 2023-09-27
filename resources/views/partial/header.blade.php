@@ -1,7 +1,7 @@
 <header style="position:  fixed;z-index:  10000;width:  100%;">
     <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #000000;">
         <div class="container">
-            <a class="navbar-brand text-white" href="#">
+            <a class="navbar-brand text-white" href="{{ route('home') }}">
                 {{ config('app.name', 'instagram') }}
             </a>
 
@@ -17,7 +17,7 @@
 
                 @auth
                     <li class="dropdown dropdown-notification nav-item  dropdown-notifications">
-                        <a class="nav-link nav-link-label" href="#" data-toggle="dropdown">
+                        <a class="nav-link nav-link-label" href="{{ route('home') }}" data-toggle="dropdown">
                             <i class="fa fa-bell"> </i>
                             <span
                                 class="badge badge-pill badge-default badge-danger badge-default badge-up badge-glow   notif-count"
@@ -58,7 +58,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Search -->
                 <div class="navbar-nav mr-auto">
-                    <input class="form-control" id="search" style="direction: rtl;width: 100%; margin: 5px; border: 1px solid #484f64; background: none;" type="text" placeholder="البحث" aria-label="Search" autocomplete="off">
+                    <input class="form-control" id="search" style="direction: rtl;width: 100%; margin: 5px; border: 1px solid
+                     #484f64; background: none;" type="text" placeholder="البحث" aria-label="Search" autocomplete="off">
                 </div>
 
                 <ul class="navbar-nav">
@@ -74,10 +75,10 @@
                         @endif
                     @else
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#"><i class="fa fa-plus"></i></a>
+                            <a class="nav-link text-white" href="{{ route('showFriends') }}"><i class="fa fa-user"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('profile.edit') }}"><i class="fa fa-user"></i></a>
+                            <a class="nav-link text-white" href="{{route('unFollowedFriends')}}"><i class="fa fa-plus"></i></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('logout') }}"
@@ -103,10 +104,10 @@
             <h1 class="jumbotron-heading"></h1>
             <p class="lead text-muted">انشر أجمل صورك وفيديوهاتك لتحصل على تفاعل الاصداقاء معك!</p>
             <p>
-                <a href="#" class="btn btn-{{ isset($active_home) ? $active_home : 'secondary' }} my-2">{{ __('Home') }}</a>
+                <a href="{{ route('home') }}" class="btn btn-{{ isset($active_home) ? $active_home : 'secondary' }} my-2">{{ __('Home') }}</a>
                 {{-- <a href="{{ route('followers.index') }}" class="btn btn-{{ isset($active_follow) ? $active_follow : 'secondary' }} my-2">{{ __('frontend.Followers') }}</a>
                 <a href="{{ route('users.index') }}" class="btn btn-{{ isset($active_user) ? $active_user : 'secondary' }} my-2">{{ __('frontend.Users') }}</a> --}}
-                <a href="{{ route('profile.edit') }}" class="btn btn-{{ isset($active_profile) ? $active_profile : 'secondary' }} my-2">{{ __('My Profile') }}</a>
+                <a href="{{ route('posts.create') }}" class="btn btn-{{ isset($active_profile) ? $active_profile : 'secondary' }} my-2">{{ __('Add Post') }}</a>
             </p>
         </div>
     </section>
