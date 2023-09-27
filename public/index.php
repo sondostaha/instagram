@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Contracts\Http\Kernel;
+use Pusher\Pusher;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Http\Kernel;
 
 define('LARAVEL_START', microtime(true));
 
@@ -43,6 +44,19 @@ require __DIR__.'/../vendor/autoload.php';
 | to this client's browser, allowing them to enjoy our application.
 |
 */
+$options = array(
+    'cluster' => 'eu',
+    'useTLS' => true
+  );
+  $pusher = new Pusher(
+    '4d133929b9227f2e6c14',
+    'fec208780ba07c0c2e15',
+    '1669263',
+    $options
+  );
+
+  $data['message'] = 'hello world';
+  $pusher->trigger('my-channel', 'my-event', $data);
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
